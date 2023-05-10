@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>選択決定くん</title>
+<link rel="shortcut icon" href="https://ksts0826.github.io/ChoiceApp/_common/images/favicon.ico" />
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+<link href="https://ksts0826.github.io/RandomLegends/css/style.css" rel="stylesheet">
+<style>
+    section img {
+        max-width: 100%;
+    }
+    .center {
+        margin: 0 auto 0 auto;
+        max-width: 90%;
+        width: 500px;
+        /*500px;*/
+    }
+    ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    li {
+        flex: 1 1 auto;
+        margin-right: 6px;
+    }
+    li:last-of-type {
+        margin-right: 0;
+    }
+    p{
+    width: fit-content;
+    margin: auto;
+    }
+    .example{
+    width: fit-content;
+    margin: auto;
+    }
+</style>
+</head>
+
+<body>
+<header>
+<div class="container">
+<h1>選択決定くん</h1>
+<h4>選択に困ったとき，選ぶべき選択肢を決めてくれます．</h4>
+</div><!-- /.container -->
+</header>
+<main>
+<div class="container">
+<section>
+
+<form action="#" id="form" class="example">
+    何択？<br>
+    <input type="number" name="word">
+    <input type="submit" value="決定">
+</form>
+    ※本アプリで選択された決定に対して，本アプリの作成者は一切の責任を負いません．
+<p id="output"></p>
+
+</section>
+</div><!-- /.container -->
+</main>
+<footer>
+<div class="container">
+<p>©︎Kouichi Nagatanis</p>
+</div><!-- /.container -->
+</footer>
+<script>
+'use strict';
+
+const getMinutes = new Date().getMinutes();
+
+
+document.getElementById('form').onsubmit = function(event) {
+    event.preventDefault();
+    var min = 1 ;
+    var max = document.getElementById('form').word.value ;
+    var randomNum = Math.floor( Math.random() * max ) +1;
+    document.getElementById('output').textContent = `「${max}」択なら，${randomNum}番目！！`;
+};
+</script>
+</body>
+</html>
