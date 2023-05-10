@@ -189,3 +189,6 @@ input[type="submit"] {
     top: 0;
     border-radius: 10px;
   }
+  .form input[type=text] {
+    font-size: 16px;
+  }
