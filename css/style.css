@@ -29,14 +29,14 @@ body {
     }
 }
 header {
-    background-color: #1aaedb;
+    background-color: #1a554b;
     border-bottom: #ead963 6px solid;
 }
 header .container {
     min-height: 60px;
-    padding-top: 0;
+    padding-top: 10px;
     padding-bottom: 0;
-    padding-left: 76px;
+    /*padding-left: 76px;*/
     background-image: url("https://ksts0826.github.io/ChoiceApp/_common/images/logo.svg");
     background-repeat: no-repeat;
     background-size: 53px;
@@ -57,14 +57,20 @@ header .container h2 {
     line-height: 1;
 }
 header .container h1 {
-    padding: 15px 0 4px 0;
+    padding: 15px auto 0 ;
     border-bottom: 1px dotted #fff;
-    font-size: 16px;
+    color: #fff;
+    font-size: 20px;
     font-weight: 500;
 }
 header .container h2 {
     padding: 5px 0 0 0;
-    font-size: 10px;
+    font-size: 16px;
+    font-weight: 400;
+}
+header .container h2 {
+    padding: 5px 0 0 0;
+    font-size: 12px;
     font-weight: 400;
 }
 @media (min-width: 768px) {
@@ -83,17 +89,18 @@ main {
 main .container {
     margin: 0 auto;
     background-color: #fff;
+    font-size: 16px;
 }
 footer {
-    background-color: #1aaedb;
+    background-color: #1a554b;
 }
 footer .container {
     min-height: 50px;
     padding-top:10px;
     padding-bottom:10px;
     color: #fff;
-    font-size: 12px;
-    text-align: right;
+    font-size: 14px;
+    text-align: left;
 }
 @media (min-width: 768px) {
     footer .container {
@@ -113,19 +120,33 @@ a:hover {
     color: #ffb974;
     text-decoration: underline;
 }
+/*
+input[type="number"] {
+    font-size: 16px;
+}
+*/
 
+input[type="text"] {
+    font-size: 16px;
+    position: relative;
+}
 input[type="submit"] {
-    padding: 2.6em 2em;
+    /* padding: 0em 0em;*/
+    font-size: 20px;
     border: none;
     outline: none;
     color: rgb(255, 255, 255);
-    background: #111;
+    background: #000;
     cursor: pointer;
     position: relative;
     z-index: 0;
     border-radius: 100px;
+    margin: 10px;
+    width: 200px; /* 幅を調整（必要に応じて調整） */
+    height: 50px; /* 高さを調整 */
+    text-align: center; /* テキストを中央揃えにする */
   }
-  
+  /*
   .bn5:before {
     content: "";
     background: linear-gradient(
@@ -189,6 +210,4 @@ input[type="submit"] {
     top: 0;
     border-radius: 10px;
   }
-  .form input[type=text] {
-    font-size: 16px;
-  }
+*/

@@ -6,7 +6,14 @@
 <title>選択決定くん</title>
 <link rel="shortcut icon" href="https://ksts0826.github.io/ChoiceApp/_common/images/favicon.ico" />
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+<!--git hub Pages 用のCSS-->
+
 <link href="https://ksts0826.github.io/RandomLegends/css/style.css" rel="stylesheet">
+
+<!--git hub Pages 用のCSSここまで-->
+<!--ローカル用のCSS
+<link rel="stylesheet" href="css/style.css">
+-->
 <style>
     section img {
         max-width: 100%;
@@ -38,6 +45,16 @@
     width: fit-content;
     margin: auto;
     }
+    .keibaSentaku{
+    width: 200px; /* 幅を調整（必要に応じて調整） */
+    height: 50px; /* 高さを調整（幅と同じく正方形にするために設定） */
+    font-size: 36px; /* 数字のフォントサイズを大きく設定 */
+    padding: 10px; /* 内部余白を調整（必要に応じて調整） */
+    text-align: center; /* テキストを中央揃えにする */
+    display: inline-block; /* インライン要素からブロック要素に変更 */
+    position: relative;
+    margin: 10px;
+    }
 </style>
 </head>
 
@@ -45,26 +62,29 @@
 <header>
 <div class="container">
 <h1>選択決定くん</h1>
-<h4>選択に困ったとき，選ぶべき選択肢を決めてくれます．</h4>
+<h2>選択に困ったとき、選ぶべき選択肢を決めてくれます。</h2>
 </div><!-- /.container -->
 </header>
 <main>
+<!-- 選択肢の欄-->
 <div class="container">
 <section>
-
-<form action="#" id="form" class="example">
-    何択？<br>
-    <input type="number" name="word">
-    <input type="submit" value="決定">
+<form action="#" id="form" class="example" onsubmit="return false;">
+    <label for="inputNumber">何択？</label>
+    <br>
+    <input class="keibaSentaku" type="number" name="inputNumber" min="2" required>
+    <br>
+    <input type="submit" value="決定" >
 </form>
-    ※本アプリで選択された決定に対して，本アプリの作成者は一切の責任を負いません．
 <p id="output"></p>
-
+<p id="twoNumbers"></p>
+<p id="threeNumbers"></p>
 </section>
 </div><!-- /.container -->
 </main>
 <footer>
 <div class="container">
+<p>本アプリで選択された決定に対して、本アプリの作成者は一切の責任を負いません。</p>
 <p>©︎Kouichi Nagatani</p>
 </div><!-- /.container -->
 </footer>
@@ -75,12 +95,49 @@ const getMinutes = new Date().getMinutes();
 
 
 document.getElementById('form').onsubmit = function(event) {
+    var inputNumber = document.getElementById('form').inputNumber.value ;
     event.preventDefault();
+    if (inputNumber < 2) {
+                alert("2以上の有効な数値を入力してください。");
+                return;
+    }
     var min = 1 ;
-    var max = document.getElementById('form').word.value ;
-    var randomNum = Math.floor( Math.random() * max ) +1;
-    document.getElementById('output').textContent = `「${max}」択なら，${randomNum}番目！！`;
-};
+    //var max = document.getElementById('form').elements.inputNumber.value;
+
+    var randomNum = Math.floor( Math.random() * inputNumber ) +1;
+
+    // 0からmaxValueまでの数字を配列に格納
+    const numbers = Array.from({ length: inputNumber }, (_, i) => i +1);
+
+    // 配列をシャッフルする関数
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    // 配列をシャッフルして最初の3つの数字を取得
+    shuffleArray(numbers);
+    const oneNumber = numbers.slice(0, 1);
+    const twoNumbers = numbers.slice(0, 2);
+    const threeNumbers = numbers.slice(0, 3);
+
+    // 結果を表示
+    if (inputNumber == 2) {
+        document.getElementById('output').textContent = `「${inputNumber}」択なら ${oneNumber}番目！！`;
+        document.getElementById('twoNumbers').textContent = ``;
+        document.getElementById('threeNumbers').textContent = ``;
+    } else if (inputNumber == 3){
+        document.getElementById('output').textContent = `「${inputNumber}」択なら ${oneNumber}番目！！`;
+        document.getElementById('twoNumbers').textContent = `2つ選ぶ場合 ` + threeNumbers.join(", ");
+        document.getElementById('threeNumbers').textContent = ``;
+    }　else {
+        document.getElementById('output').textContent = `「${inputNumber}」択なら ${oneNumber}番目！！`;
+        document.getElementById('twoNumbers').textContent = `2つ選ぶ場合 ` + twoNumbers.join(", ");
+        document.getElementById('threeNumbers').textContent = `3つ選ぶ場合 ` + threeNumbers.join(", ");
+    }
+}
 </script>
 </body>
 </html>
