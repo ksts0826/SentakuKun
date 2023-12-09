@@ -7,9 +7,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="https://github.com/ksts0826/SentakuKun/blob/main/images/favicon.ico">
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
 <!--git hub Pages 用のCSS-->
-
 <link href="https://ksts0826.github.io/RandomLegends/css/style.css" rel="stylesheet">
-
 <!--git hub Pages 用のCSSここまで-->
 <!--ローカル用のCSS
 <link rel="stylesheet" href="css/style.css">
@@ -74,8 +72,16 @@
     <br>
     <input class="keibaSentaku" type="number" name="inputNumber" min="2" required>
     <br>
+
+    <label for="inputResultNumbers">出力する数字の数は？</label>
+    <br>
+    <input class="keibaSentaku" type="number" name="inputResultNumbers" min="2" required>
+    <br>
+
+
     <input type="submit" value="決定" >
 </form>
+
 <p id="output"></p>
 <p id="twoNumbers"></p>
 <p id="threeNumbers"></p>
@@ -122,6 +128,7 @@ document.getElementById('form').onsubmit = function(event) {
     const oneNumber = numbers.slice(0, 1);
     const twoNumbers = numbers.slice(0, 2);
     const threeNumbers = numbers.slice(0, 3);
+    const anyNumbers = numbers.slice(0, n);
 
     // 結果を表示
     if (inputNumber == 2) {
