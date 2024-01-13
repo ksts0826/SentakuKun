@@ -75,10 +75,8 @@
 
     <label for="inputResultNumbers">出力する数字の数は？</label>
     <br>
-    <input class="keibaSentaku" type="number" name="inputResultNumbers" min="2" required>
+    <input class="keibaSentaku" type="number" name="inputResultNumbers" min="2" value="3">
     <br>
-
-
     <input type="submit" value="決定" >
 </form>
 
@@ -102,6 +100,9 @@ const getMinutes = new Date().getMinutes();
 
 document.getElementById('form').onsubmit = function(event) {
     var inputNumber = document.getElementById('form').inputNumber.value ;
+    // 選択数を選ぶ
+    var inputResultNumbers = document.getElementById('form').inputResultNumbers.value ;
+
     event.preventDefault();
     if (inputNumber < 2) {
                 alert("2以上の有効な数値を入力してください。");
